@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 class ShortURLController extends Controller
 {
     public function index(){
-        return view('index');
+        return view('index', [
+            'link' => ShortURL::firstWhere('target', request('target'))]);
     }
 
     public function shorten(Request $request){
@@ -30,7 +31,6 @@ class ShortURLController extends Controller
     }
 
     public function redirect(ShortURL $link){
-        // $url = ShortURL::where('short', $link)->first();
         return redirect()->to($link->target);
     }
 
