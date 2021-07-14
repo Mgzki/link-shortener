@@ -26,7 +26,6 @@ class ShortURLController extends Controller
                 'short' => $this->generateURL(),
             ]);
         }
-
         return view('index', ['url' => $url]);
     }
 
