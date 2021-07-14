@@ -1,18 +1,9 @@
 <?php
 
+use App\Http\Controllers\ShortURLController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{link:short}', [ShortURLController::class, 'redirect']);
+// Route::get('/{short}', [ShortURLController::class, 'redirectOldWay']);
+Route::get('/', [ShortURLController::class, 'index']);
+Route::post('/', [ShortURLController::class, 'shorten']);
