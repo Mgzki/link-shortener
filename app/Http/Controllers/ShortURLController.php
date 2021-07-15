@@ -22,7 +22,7 @@ class ShortURLController extends Controller
         
         if (! $url) {
             $url = ShortURL::create([
-                'target' => "//{$request->target}",
+                'target' => $request->target,
                 'short' => $this->generateURL(),
             ]);
         }
@@ -30,7 +30,7 @@ class ShortURLController extends Controller
     }
 
     public function redirect(ShortURL $link){
-        return redirect()->to($link->target);
+        return redirect()->to("//$link->target");
     }
 
     public function redirectOldWay(string $short)
