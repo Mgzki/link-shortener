@@ -14,9 +14,9 @@ class ShortURLController extends Controller
     }
 
     public function shorten(Request $request){
-        // $request->validate([
-        //     'target' => ['required', 'url'],
-        // ]);
+        $request->validate([
+            'target' => ['required'],
+        ]);
 
         $url = ShortURL::where('target', $request->target)->first();
         
